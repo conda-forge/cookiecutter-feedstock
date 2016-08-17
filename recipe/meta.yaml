@@ -31,17 +31,20 @@ requirements:
     - whichcraft >=0.3.1
 
 test:
-  files:
-    - requirements.txt
   requires:
     - git
     - pytest
     - pytest-cov
+    - pytest-mock
     - python
-    - pip
+    - freezegun
   commands:
+    # Run basic commands.
     - cookiecutter --version
     - cookiecutter --help
+    # Run test suite.
+    - cd {{ environ["SRC_DIR"] }}
+    - py.test --cov=cookiecutter -k "not _hg_ and not mercurial and not test_make_sure_path_exists and not pypackage_git"
 
 about:
   home: https://github.com/{{ gh_org }}/{{ gh_repo }}
