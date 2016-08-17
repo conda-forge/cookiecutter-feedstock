@@ -38,6 +38,7 @@ test:
     - pytest-cov
     - python
   commands:
+    - cookiecutter --version
     - cookiecutter --help
 
 about:
