@@ -15,6 +15,8 @@ source:
 build:
   number: 1
   script: python setup.py install --single-version-externally-managed --record=record.txt
+  entry_points:
+    - cookiecutter = cookiecutter:main
 
 requirements:
   build:
@@ -31,13 +33,13 @@ requirements:
     - whichcraft >=0.3.1
 
 test:
-  files:
-    - requirements.txt
   requires:
     - git
     - pytest
     - pytest-cov
+    - pytest-mock
     - python
+    - freezegun
   commands:
     - cookiecutter --version
     - cookiecutter --help
