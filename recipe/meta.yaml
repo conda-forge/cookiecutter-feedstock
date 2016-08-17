@@ -34,6 +34,7 @@ test:
   files:
     - requirements.txt
   requires:
+    - git
     - pytest
     - pytest-cov
     - python
