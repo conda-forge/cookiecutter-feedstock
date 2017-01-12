@@ -42,12 +42,12 @@ test:
     - pytest-mock
     - python
     - freezegun
+  sourcefiles:
+    - *
   commands:
     # Run basic commands.
     - cookiecutter --version
     - cookiecutter --help
-    # Run test suite.
-    - cd {{ environ["SRC_DIR"] }}
     - py.test --cov=cookiecutter -k "not _hg_ and not mercurial and not test_make_sure_path_exists and not pypackage_git"
 
 about:
