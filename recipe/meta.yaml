@@ -1,4 +1,4 @@
-{% set version = "1.4.0" %}
+{% set version = "1.5.0" %}
 {% set gh_org = "audreyr" %}
 {% set gh_repo = "cookiecutter" %}
 
@@ -10,7 +10,7 @@ package:
 source:
   fn: {{ gh_repo }}-{{ version }}.tar.gz
   url: https://github.com/{{ gh_org }}/{{ gh_repo }}/archive/{{ version }}.tar.gz
-  sha256: 7697b1d64cd9b8eb5abd9e7594e318a80f1382f45d879c425944175697b29db2
+  sha256: 553d00dcbdb6eed252ff15b5622ed98b2a22ffa96fc1b49717b4fbea32378526
 
 build:
   number: 1
