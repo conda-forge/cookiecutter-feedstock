@@ -32,7 +32,7 @@ requirements:
     - jinja2-time >=0.1.0
     - poyo >=0.1.0
     - python
-    - whichcraft >=0.3.1
+    - whichcraft >=0.4.0
 
 test:
   requires:
