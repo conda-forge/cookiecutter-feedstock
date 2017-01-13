@@ -13,12 +13,10 @@ source:
   sha256: 553d00dcbdb6eed252ff15b5622ed98b2a22ffa96fc1b49717b4fbea32378526
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
     - cookiecutter = cookiecutter.cli:main
-    # master has changed it's setup a bit as of 4a64e48... will have to fix
-    # - cookiecutter = cookiecutter.__main__:main
 
 requirements:
   build:
@@ -36,22 +34,25 @@ requirements:
 
 test:
   requires:
+    - freezegun
     - git
     - pytest
+    - pytest-catchlog
     - pytest-cov
-    - pytest-mock
+    - pytest-mock ==1.1
     - python
-    - freezegun
-  sourcefiles:
-    - *
+    - mercurial  # [py2k]
+  source_files:
+    - tests
   commands:
-    # Run basic commands.
     - cookiecutter --version
     - cookiecutter --help
-    - py.test --cov=cookiecutter -k "not _hg_ and not mercurial and not test_make_sure_path_exists and not pypackage_git"
+    - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git"
 
 about:
   home: https://github.com/{{ gh_org }}/{{ gh_repo }}
+  license_family: BSD
+  license_file: LICENSE
   license: BSD-3-Clause
   summary: >
             A command-line utility that creates projects from cookiecutters
@@ -61,5 +62,6 @@ about:
 extra:
   recipe-maintainers:
     - bollwyvl
+    - cadair
     - jakirkham
     - pydanny
