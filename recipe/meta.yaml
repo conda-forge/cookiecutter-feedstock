@@ -1,4 +1,4 @@
-{% set version = "1.4.0" %}
+{% set version = "1.5.0" %}
 {% set gh_org = "audreyr" %}
 {% set gh_repo = "cookiecutter" %}
 
@@ -10,15 +10,14 @@ package:
 source:
   fn: {{ gh_repo }}-{{ version }}.tar.gz
   url: https://github.com/{{ gh_org }}/{{ gh_repo }}/archive/{{ version }}.tar.gz
-  sha256: 7697b1d64cd9b8eb5abd9e7594e318a80f1382f45d879c425944175697b29db2
+  sha256: 553d00dcbdb6eed252ff15b5622ed98b2a22ffa96fc1b49717b4fbea32378526
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
     - cookiecutter = cookiecutter.cli:main
-    # master has changed it's setup a bit as of 4a64e48... will have to fix
-    # - cookiecutter = cookiecutter.__main__:main
+  skip: True
 
 requirements:
   build:
@@ -32,26 +31,29 @@ requirements:
     - jinja2-time >=0.1.0
     - poyo >=0.1.0
     - python
-    - whichcraft >=0.3.1
+    - whichcraft >=0.4.0
 
 test:
   requires:
+    - freezegun
     - git
     - pytest
+    - pytest-catchlog
     - pytest-cov
-    - pytest-mock
+    - pytest-mock ==1.1
     - python
-    - freezegun
+    - mercurial  # [py2k]
+  source_files:
+    - tests
   commands:
-    # Run basic commands.
     - cookiecutter --version
     - cookiecutter --help
-    # Run test suite.
-    - cd {{ environ["SRC_DIR"] }}
-    - py.test --cov=cookiecutter -k "not _hg_ and not mercurial and not test_make_sure_path_exists and not pypackage_git"
+    - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git"
 
 about:
   home: https://github.com/{{ gh_org }}/{{ gh_repo }}
+  license_family: BSD
+  license_file: LICENSE
   license: BSD-3-Clause
   summary: >
             A command-line utility that creates projects from cookiecutters
@@ -61,5 +63,6 @@ about:
 extra:
   recipe-maintainers:
     - bollwyvl
+    - cadair
     - jakirkham
     - pydanny

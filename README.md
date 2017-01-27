@@ -12,6 +12,18 @@ Summary: A command-line utility that creates projects from cookiecutters (projec
 
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/cookiecutter-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/cookiecutter-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/cookiecutter-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/cookiecutter-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/cookiecutter-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/cookiecutter-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/cookiecutter/badges/version.svg)](https://anaconda.org/conda-forge/cookiecutter)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/cookiecutter/badges/downloads.svg)](https://anaconda.org/conda-forge/cookiecutter)
+
 Installing cookiecutter
 =======================
 
@@ -32,7 +44,6 @@ It is possible to list all of the versions of `cookiecutter` available on your p
 ```
 conda search cookiecutter --channel conda-forge
 ```
-
 
 
 About conda-forge
@@ -68,18 +79,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/cookiecutter-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/cookiecutter-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/cookiecutter-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/cookiecutter-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/cookiecutter-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/cookiecutter-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/cookiecutter/badges/version.svg)](https://anaconda.org/conda-forge/cookiecutter)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/cookiecutter/badges/downloads.svg)](https://anaconda.org/conda-forge/cookiecutter)
 
 
 Updating cookiecutter-feedstock
