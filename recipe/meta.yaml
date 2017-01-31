@@ -17,7 +17,6 @@ build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
     - cookiecutter = cookiecutter.cli:main
-  skip: True
 
 requirements:
   build:
@@ -40,7 +39,7 @@ test:
     - pytest
     - pytest-catchlog
     - pytest-cov
-    - pytest-mock ==1.1
+    - pytest-mock
     - python
     - mercurial  # [py2k]
   source_files:
