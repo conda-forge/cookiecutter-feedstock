@@ -1,16 +1,17 @@
-{% set version = "1.5.0" %}
+{% set version = "1.5.1" %}
 {% set gh_org = "audreyr" %}
-{% set gh_repo = "cookiecutter" %}
+{% set name = "cookiecutter" %}
+{% set sha256 = "3fcb10dbfe4da02bf779a88f96109c1a28ff68f42d87587788f841735820249c" %}
 
 
 package:
-  name: {{ gh_repo }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ gh_repo }}-{{ version }}.tar.gz
-  url: https://github.com/{{ gh_org }}/{{ gh_repo }}/archive/{{ version }}.tar.gz
-  sha256: 553d00dcbdb6eed252ff15b5622ed98b2a22ffa96fc1b49717b4fbea32378526
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   number: 0
@@ -50,7 +51,7 @@ test:
     - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git"
 
 about:
-  home: https://github.com/{{ gh_org }}/{{ gh_repo }}
+  home: https://github.com/{{ gh_org }}/{{ name }}
   license_family: BSD
   license_file: LICENSE
   license: BSD-3-Clause
