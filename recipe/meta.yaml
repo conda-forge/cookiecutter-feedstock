@@ -33,6 +33,7 @@ requirements:
     - python
     - whichcraft >=0.4.0
     - requests >=2.18.0
+    - pytest-mock
 
 test:
   requires:
