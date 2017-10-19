@@ -42,7 +42,6 @@ test:
     - pytest
     - pytest-catchlog
     - pytest-cov
-    - pytest-mock
     - python
     - mercurial  # [py2k]
   source_files:
