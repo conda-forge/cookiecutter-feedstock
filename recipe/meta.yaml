@@ -44,7 +44,6 @@ test:
     - pytest-mock
     - python
     - mercurial  # [py2k]
-    - mock # [py2k]
   source_files:
     - tests
   commands:
