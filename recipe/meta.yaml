@@ -33,6 +33,8 @@ requirements:
     - python
     - requests >=2.18.0
     - whichcraft >=0.4.0
+    - requests >=2.18.0
+    - pytest-mock
 
 test:
   requires:
@@ -41,7 +43,6 @@ test:
     - pytest
     - pytest-catchlog
     - pytest-cov
-    - pytest-mock
     - python
     - mercurial  # [py2k]
   source_files:
