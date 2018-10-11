@@ -14,15 +14,15 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1000
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - cookiecutter = cookiecutter.cli:main
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
+    - pip
   run:
     - binaryornot >=0.2.0
     - click >=5.0
@@ -49,7 +49,7 @@ test:
   commands:
     - cookiecutter --version
     - cookiecutter --help
-    - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git"
+    - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git and not test_cli_extra_context_invalid_format and not test_should_raise_error_without_template_arg"
 
 about:
   home: https://github.com/{{ gh_org }}/{{ name }}
