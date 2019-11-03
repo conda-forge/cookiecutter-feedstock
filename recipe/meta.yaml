@@ -49,7 +49,7 @@ test:
   commands:
     - cookiecutter --version
     - cookiecutter --help
-    - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git and not test_cli_extra_context_invalid_format and not test_should_raise_error_without_template_arg"
+    - py.test --cov=cookiecutter -k "not test_make_sure_path_exists and not pypackage_git and not test_cli_extra_context_invalid_format and not test_should_raise_error_without_template_arg and not return_rendered_project_dir"
 
 about:
   home: https://github.com/{{ gh_org }}/{{ name }}
