@@ -1,4 +1,4 @@
-{% set version = "1.7.0" %}
+{% set version = "1.7.2" %}
 
 package:
   name: cookiecutter
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: 479997e1c26c51bbbaf04097ef7d82b1d91cfb03f570cb5fb5ca265c88db04ae
+  sha256: efb6b2d4780feda8908a873e38f0e61778c23f6a2ea58215723bcceb5b515dac
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cookiecutter = cookiecutter.cli:main
 
@@ -55,9 +55,7 @@ about:
   doc_url: https://cookiecutter.readthedocs.io
   doc_source_url: https://github.com/cookiecutter/cookiecutter/tree/master/docs
   summary: >
-    A command-line utility that creates projects from cookiecutters (project
-    templates), e.g. creating a Python package project from a Python package
-    project template.
+    A command-line utility that creates projects from cookiecutters (project templates), e.g. creating a Python package project from a Python package project template.
 
 extra:
   recipe-maintainers:
