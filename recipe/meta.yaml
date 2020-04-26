@@ -1,4 +1,4 @@
-{% set version = "1.7.0" %}
+{% set version = "1.7.2" %}
 
 package:
   name: cookiecutter
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: 479997e1c26c51bbbaf04097ef7d82b1d91cfb03f570cb5fb5ca265c88db04ae
+  sha256: efb6b2d4780feda8908a873e38f0e61778c23f6a2ea58215723bcceb5b515dac
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cookiecutter = cookiecutter.cli:main
 
@@ -20,29 +20,32 @@ requirements:
     - pip
     - python
   run:
-    - binaryornot >=0.2.0
+    - binaryornot >=0.4.4
     - click >=7.0
-    - future >=0.15.2
-    - jinja2 >=2.7
-    - jinja2-time >=0.1.0
-    - poyo >=0.1.0
+    - jinja2 <3.0.0a0
+    - jinja2-time >=0.2.0
+    - markupsafe <2.0.0
+    - poyo >=0.5.0
     - python
-    - requests >=2.18.0
+    - python-slugify >=4.0.0
+    - requests >=2.23.0
+    - six >=1.10
     - whichcraft >=0.4.0
 
 test:
   requires:
     - freezegun
     - git
-    - mercurial  # [py2k]
+    - mercurial  # [not (win and py3k)]
+    - pip
     - pytest
-    - pytest-catchlog
     - pytest-cov
     - pytest-mock
     - python
   source_files:
     - tests
   commands:
+    - python -m pip check
     - cookiecutter --version
     - cookiecutter --help
     - py.test --cov=cookiecutter
@@ -55,9 +58,7 @@ about:
   doc_url: https://cookiecutter.readthedocs.io
   doc_source_url: https://github.com/cookiecutter/cookiecutter/tree/master/docs
   summary: >
-    A command-line utility that creates projects from cookiecutters (project
-    templates), e.g. creating a Python package project from a Python package
-    project template.
+    A command-line utility that creates projects from cookiecutters (project templates), e.g. creating a Python package project from a Python package project template.
 
 extra:
   recipe-maintainers:
