@@ -1,4 +1,4 @@
-{% set version = "1.7.2" %}
+{% set version = "1.7.3" %}
 
 package:
   name: cookiecutter
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: efb6b2d4780feda8908a873e38f0e61778c23f6a2ea58215723bcceb5b515dac
+  sha256: 6b9a4d72882e243be077a7397d0f1f76fe66cf3df91f3115dbb5330e214fa457
 
 build:
   noarch: python
@@ -18,7 +18,7 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
   run:
     - binaryornot >=0.4.4
     - click >=7.0
@@ -26,11 +26,10 @@ requirements:
     - jinja2-time >=0.2.0
     - markupsafe <2.0.0
     - poyo >=0.5.0
-    - python
+    - python >=3.6
     - python-slugify >=4.0.0
     - requests >=2.23.0
     - six >=1.10
-    - whichcraft >=0.4.0
 
 test:
   requires:
