@@ -18,7 +18,7 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
   run:
     - binaryornot >=0.4.4
     - click >=7.0
@@ -26,11 +26,10 @@ requirements:
     - jinja2-time >=0.2.0
     - markupsafe <2.0.0
     - poyo >=0.5.0
-    - python
+    - python >=3.6
     - python-slugify >=4.0.0
     - requests >=2.23.0
     - six >=1.10
-    - whichcraft >=0.4.0
 
 test:
   requires:
