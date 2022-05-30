@@ -1,4 +1,4 @@
-{% set version = "1.7.3" %}
+{% set version = "2.1.0" %}
 
 package:
   name: cookiecutter
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: 6b9a4d72882e243be077a7397d0f1f76fe66cf3df91f3115dbb5330e214fa457
+  sha256: eca3133ebd0d138f226616c38dc456caafae7da45d6d33a3eeb83bf7f56f9c64
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - cookiecutter = cookiecutter.cli:main
