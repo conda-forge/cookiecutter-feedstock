@@ -7,8 +7,8 @@ Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cookiecutter-feedstock/blob/main/LICENSE.txt)
 
-Summary: A command-line utility that creates projects from cookiecutters (project templates), e.g. creating a Python package project from a Python package project template.
-
+Summary: A command-line utility that creates projects from project templates, e.g.
+creating a Python package project from a Python package project template.
 
 Documentation: https://cookiecutter.readthedocs.io
 
