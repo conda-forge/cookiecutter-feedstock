@@ -13,22 +13,21 @@ build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
-    - cookiecutter = cookiecutter.cli:main
+    - cookiecutter = cookiecutter.__main__:main
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python >=3.7
   run:
     - binaryornot >=0.4.4
-    - click >=7.0
+    - click >=7.0,<9
     - jinja2 >=2.7,<4.0.0
     - jinja2-time >=0.2.0
-    - poyo >=0.5.0
-    - python >=3.6
+    - python >=3.7
     - python-slugify >=4.0.0
+    - pyyaml >=5.3.1
     - requests >=2.23.0
-    - six >=1.10
 
 test:
   requires:
@@ -43,10 +42,10 @@ test:
   source_files:
     - tests
   commands:
-    - python -m pip check
+    - pip check
     - cookiecutter --version
     - cookiecutter --help
-    - py.test --cov=cookiecutter
+    - pytest tests -vv --cov=cookiecutter --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=100
 
 about:
   home: https://github.com/cookiecutter/cookiecutter
@@ -55,8 +54,9 @@ about:
   license: BSD-3-Clause
   doc_url: https://cookiecutter.readthedocs.io
   doc_source_url: https://github.com/cookiecutter/cookiecutter/tree/master/docs
-  summary: >
-    A command-line utility that creates projects from cookiecutters (project templates), e.g. creating a Python package project from a Python package project template.
+  summary: |-
+    A command-line utility that creates projects from project templates, e.g.
+    creating a Python package project from a Python package project template.
 
 extra:
   recipe-maintainers:
