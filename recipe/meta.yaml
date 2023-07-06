@@ -45,7 +45,7 @@ test:
   commands:
     - pip check
     - cookiecutter --version
-    - cookiecutter --version | grep -iE "{{ version.replace(".", "\\.") }}"
+    - cookiecutter --version | grep -iE "Cookiecutter {{ version.replace(".", "\\.") }}"
     - pip list
     - pip list | grep -iE "cookiecutter\s+{{ version.replace(".", "\\.") }}"
     - cookiecutter --help
