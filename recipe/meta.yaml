@@ -1,4 +1,4 @@
-{% set version = "2.1.1" %}
+{% set version = "2.2.0" %}
 
 package:
   name: cookiecutter
@@ -6,12 +6,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: f3982be8d9c53dac1261864013fdec7f83afd2e42ede6f6dd069c5e149c540d5
+  sha256: b3437f49d04d359a200b03b63fb9e51be9eb0e751372c318a712a868d72c4f82
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  script: 
+    # TODO: remove after fixed upstream https://github.com/cookiecutter/cookiecutter/issues/1886
+    - {{ PYTHON }} -c "p = __import__('pathlib').Path('cookiecutter/__init__.py'); p.write_text(p.read_text(encoding='utf-8').replace('2.1.2.dev0', '2.2.0'), encoding='utf-8')"
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cookiecutter = cookiecutter.__main__:main
 
@@ -20,10 +23,10 @@ requirements:
     - pip
     - python >=3.7
   run:
+    - arrow
     - binaryornot >=0.4.4
     - click >=7.0,<9
     - jinja2 >=2.7,<4.0.0
-    - jinja2-time >=0.2.0
     - python >=3.7
     - python-slugify >=4.0.0
     - pyyaml >=5.3.1
@@ -33,6 +36,7 @@ test:
   requires:
     - freezegun
     - git
+    - m2-grep  # [win]
     - mercurial  # [not (win and py3k)]
     - pip
     - pytest
@@ -44,6 +48,9 @@ test:
   commands:
     - pip check
     - cookiecutter --version
+    - cookiecutter --version | grep -iE "Cookiecutter {{ version.replace(".", "\\.") }}"
+    - pip list
+    - pip list | grep -iE "cookiecutter\s+{{ version.replace(".", "\\.") }}"
     - cookiecutter --help
     - pytest tests -vv --cov=cookiecutter --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=100
 

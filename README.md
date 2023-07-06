@@ -1,11 +1,11 @@
-About cookiecutter
-==================
+About cookiecutter-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cookiecutter-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/cookiecutter/cookiecutter
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cookiecutter-feedstock/blob/main/LICENSE.txt)
 
 Summary: A command-line utility that creates projects from project templates, e.g.
 creating a Python package project from a Python package project template.
