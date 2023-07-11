@@ -1,4 +1,4 @@
-{% set version = "2.2.2" %}
+{% set version = "2.2.3" %}
 
 package:
   name: cookiecutter
@@ -6,14 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: 3b475d17573a7785b4a22fab693be249840e235a92c93c0fa088b39e9193f194
+  sha256: d56f18c0c01c09804450b501ac43e8f6104cfa7cdd93610359c68b1ba9fd84d2
 
 build:
   noarch: python
   number: 0
   script:
-    # TODO: remove after https://github.com/cookiecutter/cookiecutter/issues/1886 is _actually_ resolved
-    - {{ PYTHON }} -c "p = __import__('pathlib').Path('cookiecutter/__init__.py'); p.write_text(p.read_text(encoding='utf-8').replace('2.1.2.dev0', '2.2.2'), encoding='utf-8')"
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cookiecutter = cookiecutter.__main__:main
