@@ -12,8 +12,6 @@ build:
   noarch: python
   number: 0
   script:
-    # TODO: remove after https://github.com/cookiecutter/cookiecutter/issues/1886 is _actually_ resolved
-    - {{ PYTHON }} -c "p = __import__('pathlib').Path('cookiecutter/__init__.py'); p.write_text(p.read_text(encoding='utf-8').replace('2.1.2.dev0', '2.2.2'), encoding='utf-8')"
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cookiecutter = cookiecutter.__main__:main
