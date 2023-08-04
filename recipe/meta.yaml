@@ -1,4 +1,4 @@
-{% set version = "2.2.3" %}
+{% set version = "2.3.0" %}
 
 package:
   name: cookiecutter
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cookiecutter/cookiecutter-{{ version }}.tar.gz
-  sha256: d56f18c0c01c09804450b501ac43e8f6104cfa7cdd93610359c68b1ba9fd84d2
+  sha256: 942a794981747f6d7f439d6e49d39dc91a9a641283614160c93c474c72c29621
 
 build:
   noarch: python
