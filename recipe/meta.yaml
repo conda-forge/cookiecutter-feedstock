@@ -29,6 +29,7 @@ requirements:
     - python-slugify >=4.0.0
     - pyyaml >=5.3.1
     - requests >=2.23.0
+    - rich
 
 test:
   requires:
