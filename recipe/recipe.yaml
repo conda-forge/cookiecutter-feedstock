@@ -3,7 +3,8 @@ schema_version: 1
 
 context:
   version: "2.7.0"
-  contains_version: ${{ "grep -iE" if unix else "findstr /c" }} "cookiecutter\s+${{ version | replace('.', '\\.') }}$"
+  contains_version: >
+    python -c "import sys, re; assert re.search('[cC]ookiecutter\s+${{ version | replace('.', '\\.') }}', sys.stdin.read())"
   python_check_max: "3.14"
   cov_fail_under: "98"
 
@@ -19,6 +20,7 @@ build:
   number: 0
   noarch: python
   script:
+    - echo "${{ version }}" > cookiecutter/VERSION.txt
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
   python:
     entry_points:
@@ -61,13 +63,12 @@ tests:
         - pytest-mock
         - python ${{ python_min }}.*
     script:
-      - pip check
+      - cookiecutter --help
       - cookiecutter --version
       - cookiecutter --version | ${{ contains_version }}
       - pip list
       - pip list | ${{ contains_version }}
-      - cookiecutter --help
-      - coverage run --source cookiecutter --branch -m pytest -vv --color=yes --tb=long
+      - coverage run --source=cookiecutter --branch -m pytest -vv --color=yes --tb=long
       - coverage report --show-missing --skip-covered --fail-under=${{ cov_fail_under }}
 
 about:
