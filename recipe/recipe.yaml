@@ -4,6 +4,7 @@ schema_version: 1
 context:
   version: "2.7.0"
   contains_version: ${{ "grep -iE" if unix else "findstr /c" }} "cookiecutter\s+${{ version | replace('.', '\\.') }}$"
+  python_check_max: "3.14"
   cov_fail_under: "98"
 
 package:
