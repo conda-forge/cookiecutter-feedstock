@@ -54,22 +54,18 @@ tests:
         - tests/
     requirements:
       run:
-        - coverage
         - freezegun
         - git
         - mercurial
-        - pip
         - pytest
+        - pytest-cov
         - pytest-mock
         - python ${{ python_min }}.*
     script:
-      - cookiecutter --help
       - cookiecutter --version
       - cookiecutter --version | ${{ contains_version }}
-      - pip list
-      - pip list | ${{ contains_version }}
-      - coverage run --source=cookiecutter --branch -m pytest -vv --color=yes --tb=long
-      - coverage report --show-missing --skip-covered --fail-under=${{ cov_fail_under }}
+      - cookiecutter --help
+      - pytest -vv --color=yes --tb=long --cov-fail-under=${{ cov_fail_under }}
 
 about:
   license_file: LICENSE
