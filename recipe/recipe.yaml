@@ -2,11 +2,11 @@
 schema_version: 1
 
 context:
-  version: "2.7.0"
-  contains_version: >
-    python -c "import sys, re; assert re.search('[cC]ookiecutter\s+${{ version | replace('.', '\\.') }}', sys.stdin.read())"
+  version: "2.7.1"
   python_check_max: "3.14"
   cov_fail_under: "98"
+  contains_version: >
+    python -c "import sys, re; assert re.search('[cC]ookiecutter\s+${{ version | replace('.', '\\.') }}', sys.stdin.read())"
 
 package:
   name: cookiecutter
@@ -14,13 +14,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/c/cookiecutter/cookiecutter-${{ version }}.tar.gz
-  sha256: b0bf50141201ebf022c95e3fa02a760b64e600b3675d6dabf97563425a62a707
+  sha256: ca7bb7bc8c6ff441fbf53921b5537668000e38d56e28d763a1b73975c66c6138
 
 build:
   number: 0
   noarch: python
   script:
-    - echo "${{ version }}" > cookiecutter/VERSION.txt
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
   python:
     entry_points:
@@ -51,25 +50,22 @@ tests:
         - ${{ python_check_max }}.*
   - files:
       source:
+        - pyproject.toml
         - tests/
     requirements:
       run:
-        - coverage
         - freezegun
         - git
         - mercurial
-        - pip
         - pytest
+        - pytest-cov
         - pytest-mock
         - python ${{ python_min }}.*
     script:
-      - cookiecutter --help
       - cookiecutter --version
       - cookiecutter --version | ${{ contains_version }}
-      - pip list
-      - pip list | ${{ contains_version }}
-      - coverage run --source=cookiecutter --branch -m pytest -vv --color=yes --tb=long
-      - coverage report --show-missing --skip-covered --fail-under=${{ cov_fail_under }}
+      - cookiecutter --help
+      - pytest -vv --color=yes --tb=long --cov-fail-under=${{ cov_fail_under }}
 
 about:
   license_file: LICENSE
