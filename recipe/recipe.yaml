@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "2.7.0"
+  version: "2.7.1"
   contains_version: >
     python -c "import sys, re; assert re.search('[cC]ookiecutter\s+${{ version | replace('.', '\\.') }}', sys.stdin.read())"
   python_check_max: "3.14"
@@ -14,7 +14,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/c/cookiecutter/cookiecutter-${{ version }}.tar.gz
-  sha256: b0bf50141201ebf022c95e3fa02a760b64e600b3675d6dabf97563425a62a707
+  sha256: ca7bb7bc8c6ff441fbf53921b5537668000e38d56e28d763a1b73975c66c6138
 
 build:
   number: 0
