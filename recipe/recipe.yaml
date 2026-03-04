@@ -50,6 +50,7 @@ tests:
         - ${{ python_check_max }}.*
   - files:
       source:
+        - pyproject.toml
         - tests/
     requirements:
       run:
